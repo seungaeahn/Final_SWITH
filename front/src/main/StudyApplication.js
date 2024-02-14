@@ -75,6 +75,7 @@ export default function StudyApplication({
     <div className="studyApplication">
       <p className="studyApplication_title">
         {applicantData.length > 0 &&
+          applicantData[index] &&
           `S.With 신청 현황 (${applicantData[index].accepted_applicants}/${applicantData[index].max_study_applicants})`}
       </p>
       <div className="studyApplaction_user">

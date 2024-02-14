@@ -315,22 +315,24 @@ function StudyDetail() {
         const response = await usersUserinfoAxios.get(
           `/application_update/${post_no}`
         );
-        setApplicantData(response.data);
 
-        const index = response.data.findIndex(
-          (item) => item.user_no === swithUser.user_no
-        );
-
-        // 데이터의 길이와 속성이 존재하는지 확인
-        if (
-          response.data.length > 0 &&
-          response.data[index].max_study_applicants !== undefined &&
-          response.data[index].accepted_applicants !== undefined
-        ) {
-          setPossibleApplicant(
-            response.data[index].max_study_applicants >
-              response.data[index].accepted_applicants
+        // Check if response.data is an array and has length > 0
+        if (Array.isArray(response.data) && response.data.length > 0) {
+          const index = response.data.findIndex(
+            (item) => item.user_no === swithUser.user_no
           );
+
+          // Check if the index is valid
+          if (
+            index !== -1 &&
+            response.data[index].max_study_applicants !== undefined &&
+            response.data[index].accepted_applicants !== undefined
+          ) {
+            setPossibleApplicant(
+              response.data[index].max_study_applicants >
+                response.data[index].accepted_applicants
+            );
+          }
         }
       } catch (error) {
         console.error("Failed applicant 데이터 가져오기 실패", error);
@@ -338,7 +340,7 @@ function StudyDetail() {
     };
 
     fetchApplicantData();
-  }, [post_no]);
+  }, [post_no, swithUser.user_no]);
 
   const [possibleApplicant, setPossibleApplicant] = useState(true);
 
@@ -449,9 +451,11 @@ function StudyDetail() {
               </li>
               <li className="studyContent_contentWrapper">
                 <span className="studyInfo_title">모집인원</span>
-                <span className="studyInfo_title_a">
-                  {applicantData[index].max_study_applicants}명
-                </span>
+                {applicantData[index] && (
+                  <span className="studyInfo_title_a">
+                    {applicantData[index].max_study_applicants}명
+                  </span>
+                )}
               </li>
               <li className="studyContent_contentWrapper">
                 <span className="studyInfo_title">시작예정일</span>
