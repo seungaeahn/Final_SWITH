@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Todo {
 	private Long id;
 	private Long post_no;
-	private String todo_description;
+	private String todo_list;
 	private String checked;
 	private Date todo_date;	
 }

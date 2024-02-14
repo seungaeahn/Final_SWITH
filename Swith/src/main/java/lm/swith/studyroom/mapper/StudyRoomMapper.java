@@ -50,8 +50,7 @@ public interface StudyRoomMapper {
 	void createCalendarEvent(Calendar calendar);
 	
 //TodoLsit
-	//INSERT
-	void createTodoList(Todo todo);
+	
 
 	List<Todo> getTodoListByDate(Date todo);
 
@@ -67,6 +66,13 @@ public interface StudyRoomMapper {
 		void deleteTodoListPostNo(Long post_no);
 		void deleteStudyMomentPostNo(Long post_no);
 		void deleteStudyRoomNoticeByPostNo(Long post_no);
+		
+		
+		//calendar & TodoList
+				void createTodoList(Todo todo); //insert
+				List<Todo> getTodoList(Long post_no, Date todo_date); // select
+				void updateTodoList(Long post_no,Long id,Date todo_date, String todo_list);//update
+				void deleteTodoList(Long post_no, Long id, Date todo_date);//delete
 }
 
 

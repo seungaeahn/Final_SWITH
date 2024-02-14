@@ -15,6 +15,9 @@ import TodoApp from "./Todo/TodoApp";
 import StudyRoomTitle from "./StudyRoomTitle";
 import Application from "./Application";
 import ChattingPage from "./Chatting/pages/ChattingPage";
+import Footer from "../../main/Footer";
+import Calender from "./TodoList/Calender";
+
 const StudyRoom = () => {
   const [userData, setUserData] = useState("");
 
@@ -54,12 +57,14 @@ const StudyRoom = () => {
           <DayCount />
           <br />
           <br />
-
-          <ReactCalendar />
           <br />
-          <div>
-            <TodoApp />{" "}
-          </div>
+          <br />
+          <br />
+          <br />
+
+          <Calender />
+          <br />
+          <div></div>
 
           <br />
           <br />
@@ -90,7 +95,16 @@ const StudyRoom = () => {
         <br />
         <br />
         <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
+      <Footer />
     </div>
   );
 };

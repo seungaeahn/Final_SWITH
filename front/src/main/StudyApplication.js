@@ -67,13 +67,15 @@ export default function StudyApplication({
 
   console.log("adminUser: " + adminUser);
 
+  const index = applicantData.findIndex(
+    (item) => item.user_no === swithUser.user_no
+  );
+
   return (
     <div className="studyApplication">
       <p className="studyApplication_title">
         {applicantData.length > 0 &&
-          applicantData[0].accepted_applicants &&
-          applicantData[0].max_study_applicants &&
-          `S.With 신청 현황 (${applicantData[0].accepted_applicants}/${applicantData[0].max_study_applicants})`}
+          `S.With 신청 현황 (${applicantData[index].accepted_applicants}/${applicantData[index].max_study_applicants})`}
       </p>
       <div className="studyApplaction_user">
         {applicantData &&

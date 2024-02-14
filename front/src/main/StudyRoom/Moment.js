@@ -91,6 +91,26 @@ const Moment = () => {
   const chunkedMoments = chunkArray(selMoment, pageSize);
   const currentData = chunkedMoments[currentPage - 1] || [];
 
+  const handleDeleteMoment = async (e, selectedMoment) => {
+    e.preventDefault();
+    console.log("Delete button clicked");
+    try {
+      //서버로 삭제할 데이터 보내기
+      const response = await usersUserinfoAxios.post(
+        `/studyRoom/delete/StudyMoment/${post_no}`,
+        { ...moment, moment_no: selectedMoment.moment_no },
+        // 삭제 전송
+        {
+          withCredentials: true,
+        }
+      );
+      alert("삭제 성공");
+      window.location.reload();
+    } catch (error) {
+      console.error("삭제 불가", error);
+    }
+  };
+
   return (
     <div>
       <h2 className="moment_box_title">S.With Moment 📷</h2>
@@ -103,7 +123,16 @@ const Moment = () => {
                 <p>{moment.moment_post_date}</p>
                 <p>작성자 : </p>
                 <p>{moment.nickname}</p>
-                <button className="moment_btn">✖</button>
+                {userData.user_no === moment.user_no && (
+                  <button
+                    onClick={(e) => {
+                      handleDeleteMoment(e, moment);
+                    }}
+                    className="moment_btn"
+                  >
+                    ✖
+                  </button>
+                )}
               </div>
               <div className="board_content_border"></div>
               <section className="moment_info_section">
@@ -125,17 +154,21 @@ const Moment = () => {
           </div>
         ))}
       </div>
-      <Pagination className="pagination-container">
-        {[...Array(Math.ceil(selMoment.length / pageSize))].map((_, index) => (
-          <Pagination.Item
-            key={index}
-            active={index + 1 === currentPage}
-            onClick={() => handlePageChange(index + 1)}
-          >
-            {index + 1}
-          </Pagination.Item>
-        ))}
-      </Pagination>
+      <div className="d-flex justify-content-center">
+        <Pagination className="pagination-container">
+          {[...Array(Math.ceil(selMoment.length / pageSize))].map(
+            (_, index) => (
+              <Pagination.Item
+                key={index}
+                active={index + 1 === currentPage}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </Pagination.Item>
+            )
+          )}
+        </Pagination>
+      </div>
     </div>
   );
 };

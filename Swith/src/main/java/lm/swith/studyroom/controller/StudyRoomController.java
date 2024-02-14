@@ -148,18 +148,8 @@ public class StudyRoomController {
 		return ResponseEntity.ok(studyRoomService);
 	}
 	
-//STUDYROOM TODO
-	//INSERT
-	@PostMapping("/create/Todo/{post_no}")
-	public ResponseEntity<?> createTodoList(@PathVariable Long post_no, @RequestBody Todo todo){
-		System.out.println(todo.getTodo_description());
-		System.out.println(todo.getChecked());
-		System.out.println(todo.getTodo_date());
-		todo.setPost_no(post_no);
-		System.out.println(todo.getPost_no());
-		studyRoomService.createTodoList(todo);
-		return ResponseEntity.ok(studyRoomService);
-	}
+//STUDYROOMTODO
+	
 	@GetMapping("/get/Todo/{date}")
 	public ResponseEntity<?>getTodoListByDate(@PathVariable Date todo_date){
 		 try {
@@ -197,7 +187,7 @@ public class StudyRoomController {
 		 StudyPost studyPost = studyRoomService.getStudyRoomTitle(post_no);
 		return ResponseEntity.ok(studyPost);
 	}
-	//studyroom title update
+	// title update
 	@PostMapping("/update/Title/{post_no}")
 	public ResponseEntity <?> updateStudyRoomTitle(@PathVariable Long post_no, @RequestParam Long user_no, @RequestParam String study_title ){
 		 System.out.println("getPost_no : " + post_no);
@@ -221,6 +211,38 @@ public class StudyRoomController {
 		}
 		return ResponseEntity.ok("ok");
 	}
+	
+	//Calendar &TodoList
+		//TodoList Insert
+		@PostMapping("/create/Todo/{post_no}")
+		public ResponseEntity<Todo> createTodoList(@PathVariable Long post_no, @RequestBody Todo todo){
+			studyRoomService.createTodoList(todo);
+			return ResponseEntity.ok(todo);
+		}
+		
+		//Select TodoList
+		@GetMapping("/get/Todo/{post_no}/{todo_date}")
+		public ResponseEntity<List<Todo>> getTodoList(@PathVariable Long post_no, @PathVariable Date todo_date){
+			List<Todo> todo = studyRoomService.getTodoList(post_no, todo_date);
+			 if (!todo.isEmpty()) {
+					return ResponseEntity.ok(todo);
+					 }else {
+						 return ResponseEntity.noContent().build();
+					 }
+		}
+		//Update TodoList
+		@PostMapping("/update/Todo/{post_no}/{id}")
+		public ResponseEntity<?>updateTodoList(@PathVariable Long post_no, @PathVariable Long id, @RequestParam Date todo_date, @RequestParam String todo_list){
+			studyRoomService.updateTodoList(post_no,id,todo_date,todo_list);
+			return ResponseEntity.ok("update Todo List Success");
+		}
+		
+		//Delete TodoList
+		@PostMapping("/delete/Todo/{post_no}/{id}")
+		public ResponseEntity<?> deleteTodoList(@PathVariable Long post_no, @PathVariable Long id, @RequestParam Date todo_date){
+			studyRoomService.deleteTodoList(post_no, id, todo_date);
+			return ResponseEntity.ok("delete success");
+		}
 	
 	
 	

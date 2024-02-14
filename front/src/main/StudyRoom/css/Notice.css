@@ -18,6 +18,56 @@
   font-family: "SejonghospitalBold";
 }
 
+.notice_gap {
+  margin-left: 5%;
+}
+
+.notice_modal_title {
+  font-family: "SUITE-Regular";
+  font-size: 30px;
+}
+
+.notice_modal_content {
+  font-family: "SUITE-Regular";
+  font-size: 30px;
+}
+
+.notice_modal_password {
+  width: 150px;
+  height: 50px;
+}
+
+.notice_title_textInput {
+  width: 450px;
+}
+
+.notice_content_textInput {
+  width: 450px;
+  height: 200px;
+}
+
+.notice_title_password {
+  font-family: "SUITE-Regular";
+  font-size: 15px;
+}
+
+.notice_btn {
+  height: 30px;
+  width: 90px;
+  background: #fffbb5;
+  border-radius: 50px;
+  font-weight: 700;
+  color: #525252;
+  font-size: 14px;
+  font-family: "SUITE-Regular";
+  padding: 0 20px;
+  border: 0px;
+  margin-right: 28%;
+}
+.notice_btn:hover {
+  background-color: rgb(249, 239, 130);
+}
+
 .notice_part {
   width: 60%;
 }
@@ -77,7 +127,7 @@
   width: 40px;
   height: 23px;
   margin-left: 3px;
-  margin-top: 9px;
+  margin-top: 4px;
 }
 .notice_password_input {
   width: 120px;
@@ -102,6 +152,7 @@
 
 .DayCount_div_all {
   margin-top: 60px;
+  margin-bottom: 5%;
 }
 
 .DayCount_startDay {

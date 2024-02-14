@@ -18,3 +18,7 @@
 .chatting_submit_button {
   border: none;
 }
+
+.message_div_all {
+  margin-bottom: 13px;
+}

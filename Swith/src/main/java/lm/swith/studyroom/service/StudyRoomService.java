@@ -75,9 +75,7 @@ public class StudyRoomService {
 	}
 	
 	//Todo Service
-	public void createTodoList(Todo todo) {
-		studyRoomMapper.createTodoList(todo);
-	}
+	
 	public List<Todo> getTodoListByDate(Date todo_date){
 		
 		return studyRoomMapper.getTodoListByDate(todo_date);
@@ -102,6 +100,23 @@ public class StudyRoomService {
     }
     public void updateStudyRoomTitle(Long post_no, Long user_no, String study_title) {
     	studyRoomMapper.updateStudyRoomTitle(post_no, user_no,study_title);
+    }
+    
+  //CalendarTodo
+    public void createTodoList(Todo todo) {
+    	studyRoomMapper.createTodoList(todo);
+    }
+    
+    public List<Todo> getTodoList(Long post_no, Date todo_date){
+    	return studyRoomMapper.getTodoList(post_no, todo_date);
+    }
+    
+    public void updateTodoList(Long post_no,Long id, Date todo_date, String todo_list) {
+    	studyRoomMapper.updateTodoList(post_no,id,todo_date,todo_list);
+    }
+    
+    public void deleteTodoList(Long post_no, Long id, Date todo_date) {
+    	studyRoomMapper.deleteTodoList(post_no, id, todo_date);
     }
     
 }

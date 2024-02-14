@@ -6,6 +6,7 @@ import { messageStore } from "../stores/MessageStore"; // 이 줄 추가
 import usersUserinfoAxios from "../../../../token/tokenAxios";
 import "./Chatting.css";
 import ChatSubmit from "./chatSubmit.png";
+import Girl from "../../../img/girl.png";
 
 const Room = () => {
   const { messageLogs } = useMessageStore();
@@ -95,17 +96,22 @@ const Room = () => {
         <ul>
           {messageLogs.map((message) => (
             <li key={message.message_id}>
-              <div
-                style={{
-                  textAlign:
-                    message.nickname === userData.nickname ? "right" : "left",
-                }}
-              >
-                {message.nickname} {message.message && `: ${message.message}`}{" "}
+              <div className="message_div_all">
+                <div
+                  style={{
+                    textAlign:
+                      message.nickname === userData.nickname ? "right" : "left",
+                    fontFamily: "SUITE-Regular",
+                  }}
+                >
+                  <img src={Girl} alt="girl" width="30px" height="30px" />
+                  {message.nickname} {message.message && `: ${message.message}`}{" "}
+                </div>
               </div>
               <div
                 style={{
                   textAlign: "right",
+                  width: "20%",
                 }}
               >
                 {message.value}

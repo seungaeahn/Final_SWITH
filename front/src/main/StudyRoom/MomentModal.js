@@ -101,7 +101,7 @@ function MomentModal() {
               value={userData.user_no}
               onChange={handleInputChange}
             />
-            <div className="moment_box_title">S.with Moment 제목 : </div>
+            <div className="moment_box_title_small">S.with Moment 제목 : </div>
             <input
               type="text"
               name="moment_title"

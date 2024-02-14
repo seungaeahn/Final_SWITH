@@ -1,5 +1,5 @@
 .moment-container {
-  height: 700px;
+  height: 1000px;
 }
 
 .moment-moment {
@@ -17,6 +17,12 @@
   font-family: "SejonghospitalBold";
   margin-bottom: 5%;
   font-size: 45px;
+}
+
+.moment_box_title_small {
+  font-family: "SejonghospitalBold";
+  margin-bottom: 5%;
+  font-size: 25px;
 }
 
 .Moment_item {
