@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+
+	<title>회원가입</title>
+	
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function sendNumber(){
+        $("#mail_number").css("display","block");
+        $.ajax({
+            url:"/users/mail",
+            type:"post",
+            dataType:"json",
+            data:{"email" : $("#email").val()},
+            success: function(data){
+                alert("인증번호 발송");
+                $("#Confirm").attr("value",data);
+            }
+        });
+    }
+
+    function confirmNumber(){
+        var number1 = $("#number").val();
+        var number2 = $("#Confirm").val();
+
+        if(number1 == number2){
+            alert("인증되었습니다.");
+            
+        }else{
+            alert("번호가 다릅니다.");
+        }
+    }
+</script>
+<body class="bg-light">
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-body">
+
+				<h2 class="card-title">회원가입</h2>
+				<form th:action="@{/users/register}" th:object="${users}" method="post">
+					<div class="form-group">
+						
+						
+					</div>
+					<div>
+						<label for="email">아이디 : </label>
+						<div id="mail_input" name="mail_input">
+							<input type="text" id="email" name="email" required />
+							<button type="button" id="sendBtn" name="sendBtn" onclick="sendNumber()">인증번호</button>
+						</div>
+						<br>
+						<div id="mail_number" name="mail_number" style="display: none">
+							<input type="text" name="number" id="number" placeholder="인증번호 입력">
+							<button type="button" name="confirmBtn" id="confirmBtn" onclick="confirmNumber()">이메일
+								인증</button>
+						</div>
+						<br>
+						<input type="text" id="Confirm" name="Confirm" style="display: none" value="">
+					</div>
+
+
+					<div class="form-group">
+						<label for="password">비밀번호 : </label>
+						<input type="text" id="password" th:field="*{password}" required />
+					</div>
+
+					<div class="form-group">
+						<label for="username">이름 : </label>
+						<input type="text" id="username" th:field="*{username}" required />
+					</div>
+
+					<div class="form-group">
+						<label for="nickname">닉네임 : </label>
+						<input type="text" id="nickname" th:field="*{nickname}" required />
+					</div>
+					<div class="form-group">
+						<label for="userprofile">프로필 : </label>
+						<input type="text" id="userprofile" th:field="*{userprofile}" required />
+					</div>
+					<div class="form-group">
+						<label for="useraddress">주소 : </label>
+						<input type="text" id="useraddress" th:field="*{useraddress}" required />
+					</div>
+					<div class="form-group">
+						<label for="userintroduction">간단 자기소개 : </label>
+						<input type="text" id="userintroduction" th:field="*{userintroduction}" required />
+					</div>
+
+
+					<input type="hidden" id="role" name="role" value="ROLE_USER" />
+
+					<button type="submit" class="btn btn-primary">가입하기</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+<!--불러올때는 $, 작성해줄때는 *-->
+<!-- th:value="${#oauth2.isMemberSignedIn() ? #authentication.principal.attributes['email']: null}" required앞에-->
