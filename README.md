@@ -1,4 +1,5 @@
 # Study together! Study With S.With
+위치기반 API를 활용해 스터디와 프로젝트 구성원을 손쉽게 찾기 위한 개발자 스터디/프로젝트 구인 웹사이트
 ![wholepage](https://github.com/seungaeahn/Final_SWITH/assets/143372285/fd59fe1d-79d1-41f0-9271-82e49907363a)
 
 ## 기획의도
@@ -25,7 +26,7 @@
  
 
 
-## S.With 홈페이지 기능 및 특징
+## S.With 홈페이지 기능 및 특징
 ![2](https://github.com/seungaeahn/Final_SWITH/assets/143372285/aa54fb26-1c14-4cce-b40d-6060e623446e)
 ![3](https://github.com/seungaeahn/Final_SWITH/assets/143372285/7eeb413e-91dc-42fd-9ff6-ca3db915e2bc)
 ![4](https://github.com/seungaeahn/Final_SWITH/assets/143372285/c31e0923-7967-4c27-acd3-98190f128577)
